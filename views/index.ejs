@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <p id="s"></p>
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.js"></script>
+  </body>
+  <script>
+    var data={tenantCode:"hcyzh"};
+    $.ajax({
+          url: '/apiv3/100/tenant/l.do?t=0.7777453821080116',
+          type: 'POST',
+          dataType: 'json',
+          contentType: "application/json;charset=UTF-8",
+          data:JSON.stringify(data),
+          headers: {
+            'Service-Name': 'm100',
+          },
+          success: function(ret) {
+             console.log(ret,'0');
+             $('#s').html(ret.result);
+
+          },
+          error: function(xhr, status, err) {
+            console.log(err);
+          }
+      });
+</script>
+</html>
